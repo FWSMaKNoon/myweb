@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card p-4 shadow-sm mx-auto" style="border: 1px solid #ddd; border-radius: 10px; max-width: 500px;">
+    <%= form_with(model: product, local: true) do |form| %>
+      <% if product.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h4><%= pluralize(product.errors.count, "error") %> đã xảy ra:</h4>
+          <ul>
+            <% product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group mb-3">
+        <%= form.label :tên %>
+        <%= form.text_field :name, class:"form-control", placeholder:"Tên Sản Phẩm", required: true %>
+      </div>
+
+      <div class="field form-group mb-3">
+        <%= form.label :Mô_tả %>
+        <%= form.rich_text_area :description, class:"form-control", required: true %>
+      </div>
+
+      <div class="field form-group mb-3">
+        <%= form.label :giá %>
+        <%= form.text_field :price, class:"form-control", placeholder:"Giá", required: true %>
+      </div>
+
+      <div class="field form-group mb-3">
+        <%= form.label :số_lượng %>
+        <%= form.number_field :stock, class:"form-control", placeholder:"Số Lượng", required: true %>
+      </div>
+
+      <div class="field form-group mb-3">
+        <%= form.label :hình_ảnh%>
+        <%= form.file_field :featured_image, accept: "image/*", class:"form-control", placeholder:"Số Lượng", required: true %>
+      </div>
+
+      <br/>
+      <div class="actions text-center">
+        <%= form.submit "Lưu", class:'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

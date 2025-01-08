@@ -1,0 +1,9 @@
+<% content_for :title, "New product" %>
+
+<h3 class="mb-4 text-center">Thêm Sản Phẩm</h3>
+<%= render "form", product: @product %>
+<br>
+
+<div class="actions text-center">
+  <%= link_to "Quay lại", products_path, class:"btn btn-dark " %>
+</div>

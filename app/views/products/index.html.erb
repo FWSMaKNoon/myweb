@@ -1,22 +1,25 @@
 <div class="container mt-5">
   <h1 class="text-center mb-5">Danh Sách Sản Phẩm</h1>
   <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <!-- Bọc hình ảnh trong liên kết để khi click vào hình ảnh sẽ dẫn đến trang chi tiết -->
-          <% if product.featured_image.attached? %>
-            <%= link_to product_path(product) do %> <!-- Tạo liên kết đến trang chi tiết sản phẩm -->
-              <%= image_tag product.featured_image, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;", alt: product.name %>
+    <% if @products.any? %>
+      <% @products.each do |product| %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <% if product.featured_image.attached? %>
+              <%= link_to product_path(product) do %>
+                <%= image_tag product.featured_image, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;", alt: product.name %>
+              <% end %>
             <% end %>
-          <% end %>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title"><%= product.name %></h5>
-            <p class="card-text"><%= product.description %></p>
-            <p><strong>Giá:</strong> <%= number_to_currency(product.price) %></p>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <h5 class="card-title"><%= product.name %></h5>
+              <p class="card-text"><%= product.description %></p>
+              <p><strong>Giá:</strong> <%= number_to_currency(product.price) %></p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p class="text-center">Không có sản phẩm nào để hiển thị.</p>
     <% end %>
   </div>
 </div>

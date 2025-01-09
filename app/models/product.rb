@@ -15,7 +15,7 @@ class Product < ApplicationRecord
     after_update_commit :notify_subscribers, if: :back_in_stock?
 
     def back_in_stock?
-        inventory_count_previously_was.zero? && inventory_count > 0
+        stock_previously_was.zero? && stock > 0
     end
 
     def notify_subscribers

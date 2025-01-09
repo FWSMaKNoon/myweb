@@ -13855,3 +13855,7 @@ table.dataTable,table.dataTable td,table.dataTable th {
     width: 120px; /* Chỉnh kích thước ảnh nhỏ lại */
     height: 120px; /* Đảm bảo ảnh là hình vuông */
 }
+.out-of-stock {
+    color: red;
+    font-weight: bold;
+  }

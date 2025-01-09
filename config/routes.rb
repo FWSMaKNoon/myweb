@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :products
   root "products#index"
+  devise_for :users
+
+  resources :products do
+    resources :subscribers, only: [ :create ]
+    resource :unsubscribe, only: [ :show ]
+  end
+
 end

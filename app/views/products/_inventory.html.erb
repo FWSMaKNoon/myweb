@@ -1,0 +1,11 @@
+<% if product.stock? %>
+  <p><%= product.stock %> in stock</p>
+<% else %>
+  <p class="out-of-stock">Hết hàng</p>
+  <p>Gửi email cho tôi khi có sẵn</p>
+
+  <%= form_with model: [product, Subscriber.new] do |form| %>
+    <%= form.email_field :email, placeholder: "abc@example.com", required: true %>
+    <%= form.submit "Gửi" %>
+  <% end %>
+<% end %>

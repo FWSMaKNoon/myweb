@@ -19,8 +19,9 @@ production:
   primary: &primary_production
     <<: *default
     database: product_production
-    username: product
-    password: <%= ENV["PRODUCT_DATABASE_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>
+    # username: product
+    # password: <%= ENV["PRODUCT_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: product_production_cache
